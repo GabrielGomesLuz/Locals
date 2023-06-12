@@ -1,0 +1,13 @@
+﻿@model CarrinhoReservaViewModel
+
+
+
+@if(Model.CarrinhoReserva.CarrinhoReservaImoveis.Count > 0){
+
+    <a asp-controller="CarrinhoReserva" asp-action="Index">
+        <span><img src="~/css/Images/1067273.png" width="30" height="30"/></span>
+        <span style="color:green" class="bg-opacity-100">
+            @Model.CarrinhoReserva.CarrinhoReservaImoveis.Count
+        </span>
+    </a>
+}

@@ -13,5 +13,7 @@ namespace Locals.Context
         public DbSet<Categoria> Categorias { get; set; }
         public DbSet<Imovel> Imoveis { get; set; }
 
+        public DbSet<CarrinhoReservaImovel> CarrinhoReservaItens  { get; set; }
+
     }
 }

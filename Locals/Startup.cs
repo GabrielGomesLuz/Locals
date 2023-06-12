@@ -3,6 +3,8 @@ using Locals.Repositories.Interfaces;
 using Microsoft.AspNetCore.Connections;
 using Microsoft.EntityFrameworkCore;
 using Locals.Repositories;
+using Microsoft.Extensions.DependencyInjection;
+using Locals.Models;
 
 namespace Locals;
 
@@ -26,6 +28,12 @@ public class Startup
         //criar uma instancia da classe e injetar no construtor que estiver solciitando
         services.AddTransient<I_ImovelRepository,ImovelRepository>();
         services.AddTransient<ICategoriaRepository,CategoriaRepository>();
+        //Cria instancia a cada request
+        services.AddScoped(p => CarrinhoReserva.GetCarrinho(p));
+        //definindo tempo de vida do session e criar instancia do http context para receber informações de request e response e requisições
+        services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
+        services.AddMemoryCache();
+        services.AddSession();
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -45,6 +53,8 @@ public class Startup
         app.UseStaticFiles();
 
         app.UseRouting();
+        //configurando session
+        app.UseSession();
 
         app.UseAuthorization();
 
