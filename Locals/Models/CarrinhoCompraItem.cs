@@ -9,7 +9,6 @@ namespace Locals.Models
         public DateTime DataEntrada { get; set; }
         public DateTime DataSaida { get; set; }
 
-        public DateTime TotalDias { get; set; }
 
         [StringLength(200)]
         public string CarrinhoReservaId { get; set; }

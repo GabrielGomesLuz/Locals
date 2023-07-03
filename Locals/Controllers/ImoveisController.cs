@@ -2,6 +2,7 @@
 using Locals.Repositories;
 using Locals.Repositories.Interfaces;
 using Locals.ViewModels;
+using Locals.Models;
 
 namespace Locals.Controllers
 {
@@ -15,14 +16,42 @@ namespace Locals.Controllers
             _imovelRepository = imovelRepository;
         }
 
-        public IActionResult List()
+        public IActionResult List(string categoria)
         {
-            //var imoveis = _imovelRepository.Imoveis;
-            //return View(imoveis);
-            var imoveisListViewModel = new ImovelListViewModel();
-            imoveisListViewModel.Imoveis = _imovelRepository.Imoveis;
-            imoveisListViewModel.CategoriaAtual = "Categoria Atual";
+
+            IEnumerable<Imovel> imoveis;
+            string categoriaAtual = string.Empty;
+
+            if (string.IsNullOrEmpty(categoria))
+            {
+                imoveis = _imovelRepository.Imoveis.OrderBy(p => p.ImovelId);
+                categoriaAtual = "Todos os imóveis";
+
+            }
+            else
+            {
+                imoveis = _imovelRepository.Imoveis.Where(p => p.Categoria.CategoriaNome.Equals(categoria)).OrderBy(p => p.NomeImovel);
+                
+                categoriaAtual = categoria;
+            }
+
+            var imoveisListViewModel = new ImovelListViewModel
+            {
+                Imoveis = imoveis,
+                CategoriaAtual = categoriaAtual,
+                
+            };
+
+
             return View(imoveisListViewModel);
+        }
+
+
+        public IActionResult Details (int imovelId)
+        {
+            var imovel = _imovelRepository.Imoveis.FirstOrDefault(p=> p.ImovelId == imovelId);
+            return View(imovel);
+
         }
     }
 }
