@@ -5,23 +5,24 @@
     .col{
 
 
-        align-items:flex-end;
+        align-items:end;
     }
 </style>
 
- <section id="container">
+ <section id="containers">
             <div class="row row-cols-1 row-cols-md-2 g-4">
                 <div class="col">
-                  <div class="card">
+                  <div class="cards">
                     <img src="@Model.ImagemThumbnailUrl" class="card-img-top" alt="Hollywood Sign on The Hill"/>
                     <div class="card-body">
-                    <h4 class="card-title"><a asp-controller="Imoveis" asp-action="Details" asp-route-imovelid="@Model.ImovelId">@Model.NomeImovel</a></h4>
+                    <h4 class="card-title"><a asp-controller="Imoveis" asp-action="Details" asp-route-imovelid="@Model.ImovelId" style="color:white">@Model.NomeImovel</a></h4>
                       <p class="card-text">
                         @Model.DescricaoCurta
                         <h5>@Model.Preco.ToString("c")</h5>
                       </p>
+                    <a class="btn btn-primary" id="reservar" asp-controller="CarrinhoReserva" asp-action="AdicionarItemNoCarrinhoReserva" asp-route-ImovelId="@Model.ImovelId" role="button" style="color:whitesmoke">Reservar</a>
                     </div>
-                    <a class="btn btn-primary brn-sm btn-light" asp-controller="CarrinhoReserva" asp-action="AdicionarItemNoCarrinhoReserva" asp-route-ImovelId="@Model.ImovelId" role="button" style="color: black;">Reservar</a>
+                    
                   </div>
                 </div>
                 </div>

@@ -22,58 +22,106 @@ body {
     
 }
 
-.card {
-    height: 480px;
+.cards {
+    height: 490px;
     background-color: brown;
     padding: 10px;
     width: 300px;
-    margin: 10px; /* separar os elementos em "blocos separados" */
+    margin: 30px; /* separar os elementos em "blocos separados" */
 }
 
-#container {
-    display: flex;
-    flex-direction: row; /* pode ser alterado em como se organiza os itens (colunas, linhas) */
-    flex-wrap: wrap;
+#containers {
+    display:inline-table;
+    flex-direction:row; /* pode ser alterado em como se organiza os itens (colunas, linhas) */
+    flex-wrap:wrap;
     justify-content: space-between; /* spacebetween separa os itens e alinha  */
     margin: auto;
     padding-left: 0px;
 }
 
+#reservar{
+    padding-left:80px;
+    padding-right:80px;
+    display:flex;
+    padding-top:5px;
+    
+    
+    
+    
+}
 
-.image-container {
+
+
+
+.image-container img {
+    display:block;
     position: relative;
     margin-top:5px;
     margin-bottom:4px;
     border-radius: 9%;
-    padding-top: 1%;
-    width: 100%; /* altere o valor para ajustar o tamanho */
+    padding-top: 3%;
+    padding:2px;
+    width: 100%; 
+    height:auto;
     background-color: deepskyblue;
 }
 
-.texto-imagem {
+
+
+
+.container {
+    position: relative;
+}
+
+
+
+.text-imagem {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: #fff;
-    padding: 10px;
-    font-size: 16px;
-    text-align: right;
-    padding-bottom: 15%;
+    top: 50%;
+    left: 35%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    color:whitesmoke;
 }
 
-#busca{
-    margin-left:460px;
+    .text-imagem h1,
+    .text-imagem h2,
+    .text-imagem input,
+    .text-imagem a {
+        max-width: 100%;
+        
+    }
+
+    .text-imagem h1,
+    .text-imagem h2 {
+        max-width: 100%;
+        font-size: 2.5rem;
+    }
+
+@media (max-width: 768px) {
+    .text-imagem h1,
+    .text-imagem h2 {
+        font-size: 1.8rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .text-imagem h1,
+    .text-imagem h2 {
+        font-size: 1.5rem;
+    }
 }
 
 
 
-.texto-imagem {
+.text-imagem {
     font-size: 2vw;
 }
 
 
-
+#textoprincipal{
+    padding-top:0px;
+}
 
 
 

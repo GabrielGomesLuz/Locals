@@ -61,8 +61,9 @@ namespace Locals.Models
                     DataSaida = new DateTime().AddDays(1),
                     HoraReservado = DateTime.Now
                 };
+                _context.CarrinhoReservaItens.Add(carrinhoReservaImovel);
+                _context.SaveChanges();
             }
-            _context.SaveChanges();
             
         }
 

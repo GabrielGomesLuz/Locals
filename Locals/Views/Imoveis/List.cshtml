@@ -1,10 +1,19 @@
 ﻿@model ImovelListViewModel
 
+<style>
 
+    #listagem {
+        padding-top: 10px;
+        padding-bottom: 10px;
+
+    }
+
+</style>
 
     <div>
-        <h2>
+        <h2 id="listagem">
             @Model.CategoriaAtual
+            <hr />
         </h2>
     </div>
 

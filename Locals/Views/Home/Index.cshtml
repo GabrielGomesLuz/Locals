@@ -3,7 +3,7 @@
 
 <style>
 
-    h2{
+    #listagem{
         padding-top:100px;
         padding-bottom:70px;
     }
@@ -13,7 +13,7 @@
 <partial name ="_Carousel" />
 
 
-<h2>Imóveis em alta</h2>
+<h2 id="listagem">Imóveis em alta</h2>
 
 <div class="row">
     @foreach(var imovel in Model.ImoveisDestaques)
