@@ -24,6 +24,7 @@ public class Startup
         //Adicionando o context como serviço para poder utilizar o EF Core
         services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
+        services.AddTransient<IReservaRepository, IReservaRepository>();
         //toda vez que solicitar uma instancia referenciando essas interfaces, o container DI vai
         //criar uma instancia da classe e injetar no construtor que estiver solciitando
         services.AddTransient<I_ImovelRepository,ImovelRepository>();
@@ -34,6 +35,8 @@ public class Startup
         services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
         services.AddMemoryCache();
         services.AddSession();
+
+
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
