@@ -54,6 +54,14 @@ namespace Locals.Controllers
 
         }
 
+        public IActionResult Search (string pesquisa)
+        {
+
+
+
+            return View();
+        }
+
         
     }
 }
