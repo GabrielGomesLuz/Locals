@@ -15,13 +15,14 @@ namespace Locals.Context
 
         public DbSet<CarrinhoReservaImovel> CarrinhoReservaItens  { get; set; }
 
-        public DbSet<ReservaDetalhe> ReservaDetalhe { get; set; }
+        public DbSet<ImagemImovel> ImagemImoveis { get; set; }
 
-        public DbSet<ReservaInteresse> ReservaInteresse { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Imovel>()
+                .HasMany(p => p.ImagemImoveis)
+                .WithOne(p => p.Imovel).HasForeignKey(p => p.ImovelId);
+        }
 
-
-
-
-       
     }
 }

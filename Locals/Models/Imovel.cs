@@ -60,11 +60,11 @@ namespace Locals.Models
 
         public virtual Categoria Categoria { get; set; }
 
-        
+        public virtual ICollection<ImagemImovel> ImagemImoveis { get; set; }
 
         [Display(Name = "Caminho Imagem do Imóvel")]
         [StringLength(200, ErrorMessage = "O {0} deve ter no máximo {1} caracteres")]
-         
+
         public string Imagem1 { get; set; }
 
         [Display(Name = "Caminho Imagem do Imóvel")]
