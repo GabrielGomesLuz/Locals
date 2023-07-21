@@ -4,6 +4,7 @@ using Locals.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Locals.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230717171925_Clone17.07")]
+    partial class Clone1707
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,6 +77,29 @@ namespace Locals.Migrations
                     b.HasKey("CategoriaID");
 
                     b.ToTable("Categorias");
+                });
+
+            modelBuilder.Entity("Locals.Models.ImagemImovel", b =>
+                {
+                    b.Property<int>("ImagemImovelId")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ImagemImovelId"));
+
+                    b.Property<string>("CaminhoImagem")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
+
+                    b.Property<int>("ImovelId")
+                        .HasColumnType("int");
+
+                    b.HasKey("ImagemImovelId");
+
+                    b.HasIndex("ImovelId");
+
+                    b.ToTable("ImagensImovel");
                 });
 
             modelBuilder.Entity("Locals.Models.Imovel", b =>
@@ -146,74 +172,22 @@ namespace Locals.Migrations
                     b.ToTable("Imoveis");
                 });
 
-            modelBuilder.Entity("Locals.Models.ReservaDetalhe", b =>
-                {
-                    b.Property<int>("ReservaDetalheId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReservaDetalheId"));
-
-                    b.Property<int>("ImovelId")
-                        .HasColumnType("int");
-
-                    b.Property<decimal>("Preco")
-                        .HasColumnType("decimal(18,2)");
-
-                    b.Property<int>("ReservaInteresseId")
-                        .HasColumnType("int");
-
-                    b.HasKey("ReservaDetalheId");
-
-                    b.HasIndex("ImovelId");
-
-                    b.HasIndex("ReservaInteresseId");
-
-                    b.ToTable("ReservaDetalhe");
-                });
-
-            modelBuilder.Entity("Locals.Models.ReservaInteresse", b =>
-                {
-                    b.Property<int>("ReservaInteresseId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReservaInteresseId"));
-
-                    b.Property<string>("Email")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("EndereçoTitular")
-                        .IsRequired()
-                        .HasMaxLength(60)
-                        .HasColumnType("nvarchar(60)");
-
-                    b.Property<DateTime>("HoraReserva")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("TelefoneTitular")
-                        .IsRequired()
-                        .HasMaxLength(11)
-                        .HasColumnType("nvarchar(11)");
-
-                    b.Property<string>("TitularReserva")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("nvarchar(50)");
-
-                    b.Property<int>("TotalItensPedido")
-                        .HasColumnType("int");
-
-                    b.HasKey("ReservaInteresseId");
-
-                    b.ToTable("ReservaInteresse");
-                });
-
             modelBuilder.Entity("Locals.Models.CarrinhoReservaImovel", b =>
                 {
                     b.HasOne("Locals.Models.Imovel", "Imovel")
                         .WithMany()
                         .HasForeignKey("ImovelId");
+
+                    b.Navigation("Imovel");
+                });
+
+            modelBuilder.Entity("Locals.Models.ImagemImovel", b =>
+                {
+                    b.HasOne("Locals.Models.Imovel", "Imovel")
+                        .WithMany("ImagemImoveis")
+                        .HasForeignKey("ImovelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Imovel");
                 });
@@ -229,33 +203,14 @@ namespace Locals.Migrations
                     b.Navigation("Categoria");
                 });
 
-            modelBuilder.Entity("Locals.Models.ReservaDetalhe", b =>
-                {
-                    b.HasOne("Locals.Models.Imovel", "Imovel")
-                        .WithMany()
-                        .HasForeignKey("ImovelId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Locals.Models.ReservaInteresse", "Reserva")
-                        .WithMany("ReservaItens")
-                        .HasForeignKey("ReservaInteresseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Imovel");
-
-                    b.Navigation("Reserva");
-                });
-
             modelBuilder.Entity("Locals.Models.Categoria", b =>
                 {
                     b.Navigation("Imoveis");
                 });
 
-            modelBuilder.Entity("Locals.Models.ReservaInteresse", b =>
+            modelBuilder.Entity("Locals.Models.Imovel", b =>
                 {
-                    b.Navigation("ReservaItens");
+                    b.Navigation("ImagemImoveis");
                 });
 #pragma warning restore 612, 618
         }
