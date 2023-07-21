@@ -24,7 +24,7 @@ public class Startup
         //Adicionando o context como serviço para poder utilizar o EF Core
         services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-        services.AddTransient<IReservaRepository, IReservaRepository>();
+        services.AddTransient<IReservaRepository, ReservaRepository>();
         //toda vez que solicitar uma instancia referenciando essas interfaces, o container DI vai
         //criar uma instancia da classe e injetar no construtor que estiver solciitando
         services.AddTransient<I_ImovelRepository,ImovelRepository>();
