@@ -53,7 +53,5 @@ namespace Locals.Controllers
             return View(imovel);
 
         }
-
-        
     }
 }
