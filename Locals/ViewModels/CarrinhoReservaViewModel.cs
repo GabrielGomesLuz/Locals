@@ -1,5 +1,4 @@
 ﻿using Locals.Models;
-using Locals.Repositories;
 
 namespace Locals.ViewModels
 {
@@ -9,8 +8,6 @@ namespace Locals.ViewModels
         public CarrinhoReserva CarrinhoReserva { get; set; }
 
         public IQueryable CarrinhoReservaTotal { get; set; }
-
-        
 
 
 
