@@ -22,12 +22,6 @@ namespace Locals.Context
 
 
 
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Imovel>()
-                .HasMany(p => p.ImagemImoveis)
-                .WithOne(p => p.Imovel).HasForeignKey(p => p.ImovelId);
-        }
-
+       
     }
 }
