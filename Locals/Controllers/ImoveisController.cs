@@ -54,6 +54,39 @@ namespace Locals.Controllers
 
         }
 
+        public ViewResult Search(string searchString)
+        {
+            IEnumerable<Imovel> imoveis;
+            string categoriaAtual = string.Empty;
+
+            if(string.IsNullOrEmpty(searchString))
+            {
+                imoveis = _imovelRepository.Imoveis.OrderBy(p => p.ImovelId);
+                categoriaAtual = "Todos os Imóveis";
+            }
+            else
+            {
+                imoveis = _imovelRepository.Imoveis.Where(p => p.NomeImovel.ToLower().Contains(searchString.ToLower()));
+
+                if (imoveis.Any())
+                {
+                    categoriaAtual = "Imóveis";
+
+                }
+                else
+                {
+                    categoriaAtual = "Nenhum Imóvel foi encontrado";
+                }
+
+                
+            }
+            return View("~/Views/Imoveis/List.cshtml", new ImovelListViewModel
+            {
+                Imoveis = imoveis,
+                CategoriaAtual = categoriaAtual
+            });
+        }
+
         
     }
 }

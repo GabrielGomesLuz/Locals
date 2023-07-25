@@ -78,7 +78,7 @@ body {
 .text-imagem {
     position: absolute;
     top: 50%;
-    left: 35%;
+    left: 34%;
     transform: translate(-50%, -50%);
     text-align: left;
     color:whitesmoke;
