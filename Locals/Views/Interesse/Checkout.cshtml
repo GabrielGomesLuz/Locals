@@ -1,0 +1,45 @@
+﻿@model ReservaInteresse
+
+<h3>Complete seus dados:</h3>
+<hr />
+
+<form asp-action="Checkout" method="post" class="form-horizontal" role="form">
+    <div class="row">
+        <div class="form-group col-md-6">
+            <label asp-for="TitularReserva" class="control-label"></label>
+            <input asp-for="TitularReserva" class="form-control" />
+            <span asp-validation-for="TitularReserva" class="text-danger"></span>
+        </div>
+        <div class="form-group col-md-6">
+            <label asp-for="EndereçoTitular" class="control-label"></label>
+            <input asp-for="EndereçoTitular" class="form-control" />
+            <span asp-validation-for="EndereçoTitular" class="text-danger"></span>
+        </div>
+    </div>
+
+        <div class="row">
+            <div class="form-group col-md-6">
+                <label asp-for="TelefoneTitular" class="control-label"></label>
+                <input asp-for="TelefoneTitular" class="form-control" />
+                <span asp-validation-for="TelefoneTitular" class="text-danger"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Email" class="control-label"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+        </div>
+        
+        <div class="row">
+            <div class="form-group"´>
+                <input class="btn btn-success" type="submit" value="Enviar dados" />
+            </div>
+            &nbsp;
+            <div class="form-group">
+                <a class="btn btn-outline-info" asp-controller="CarrinhoReserva" asp-action="Index">Retornar ao carrinho</a>
+            </div>
+        </div>
+
+      
+   
+</form>

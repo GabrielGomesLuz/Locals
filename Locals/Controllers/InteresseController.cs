@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Locals.Repositories.Interfaces;
 using Locals.Models;
+using Locals.Migrations;
 
 namespace Locals.Controllers
 {
@@ -26,7 +27,31 @@ namespace Locals.Controllers
         [HttpPost]
         public IActionResult Checkout(ReservaInteresse reserva)
         {
-            return View();
+            int totalItens = 0; 
+            decimal precoTotal = decimal.Zero;
+
+            List<Models.CarrinhoReservaImovel> itens = carrinhoReserva.GetCarrinhoReservaImoveis();
+            carrinhoReserva.CarrinhoReservaImoveis = itens;
+
+            //verificar se existe imoveis no carrinho
+            if(carrinhoReserva.CarrinhoReservaImoveis.Count == 0) {
+                ModelState.AddModelError("","Carrinho vazio!");
+            }
+            
+            if(ModelState.IsValid)
+            {
+                reservaIRepository.CriarReserva(reserva);
+
+                ViewBag.CheckoutCompletoMensagem = "Obrigado pelo interesse :)";
+
+                carrinhoReserva.LimparCarrinho();
+
+                return View("~/Views/Interesse/CheckoutCompleto.cshtml", reserva);
+
+            }
+            return View(reserva);
+            
+
         }
     }
 }
