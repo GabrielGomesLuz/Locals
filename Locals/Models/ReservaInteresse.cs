@@ -40,7 +40,7 @@ namespace Locals.Models
 
 
         [DataType(DataType.EmailAddress)]
-        [RegularExpression(@"b[A-Z0-9._%-]+@[A-Z0-9.-]+.[A-Z]{2,4}b", ErrorMessage = "E-mail em formato inválido.")]
+        [RegularExpression(@"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$", ErrorMessage = "E-mail em formato inválido.")]
         [System.ComponentModel.DataAnnotations.Required(ErrorMessage = "Necessário informar o email do titular")]
 
         public string Email { get; set; }
