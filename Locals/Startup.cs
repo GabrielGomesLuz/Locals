@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 using Locals.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 using Locals.Models;
+using Microsoft.AspNetCore.Identity;
 
 namespace Locals;
 
@@ -23,6 +24,11 @@ public class Startup
         services.AddControllersWithViews();
         //Adicionando o context como serviço para poder utilizar o EF Core
         services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
+        
+        services.AddIdentity<IdentityUser, IdentityRole>()
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
+
 
         services.AddTransient<IReservaRepository, ReservaRepository>();
         //toda vez que solicitar uma instancia referenciando essas interfaces, o container DI vai
@@ -58,7 +64,7 @@ public class Startup
         app.UseRouting();
         //configurando session
         app.UseSession();
-
+        app.UseAuthentication();
         app.UseAuthorization();
 
         app.UseEndpoints(endpoints =>
