@@ -29,6 +29,17 @@ public class Startup
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
 
+        services.Configure<IdentityOptions>(options =>
+        {
+            options.Password.RequireDigit = false;
+            options.Password.RequireLowercase = false;
+            options.Password.RequireUppercase = false;
+            options.Password.RequireNonAlphanumeric = false;
+            options.Password.RequiredUniqueChars = 1;
+        });
+
+
+
 
         services.AddTransient<IReservaRepository, ReservaRepository>();
         //toda vez que solicitar uma instancia referenciando essas interfaces, o container DI vai

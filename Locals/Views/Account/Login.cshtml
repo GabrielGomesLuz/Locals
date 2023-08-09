@@ -1,0 +1,70 @@
+﻿@model LoginViewModel
+
+
+
+
+<section class="h-100 gradient-form" style="background-color: #eee;">
+    <div class="container py-5 h-100">
+        <div class="row d-flex justify-content-center align-items-center h-100">
+            <div class="col-xl-10">
+                <div class="card rounded-3 text-black">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="card-body p-md-5 mx-md-4">
+
+                                <div class="text-center">
+                                    <img src="~/Images/logo.svg"
+                                         style="width: 185px;" alt="logo">
+                                    <h4 class="mt-1 mb-5 pb-1">Bem vindo a Locals</h4>
+                                </div>
+
+                                <form asp-controller="Account" asp-action="Login" method="post">
+                                    <p>Entre com a sua conta:</p>
+                                    <div asp-validation-summary="All" class="text-danger"></div>
+                                    <input type="hidden" asp-for="ReturnUrl" />
+                                    <div class="form-outline mb-4" >
+                   
+                                        <input asp-for="UserName"  type="email" id="form2Example11" class="form-control"
+                                               placeholder="Digite o email" />
+                                        <label asp-for="UserName" class="form-label" for="form2Example11">Email</label>
+                                        <span asp-validation-for="UserName" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-outline mb-4">
+                                        <input asp-for="Password" type="password" id="form2Example22" class="form-control" placeholder="Senha"/>
+                                        <label asp-for="Password" class="form-label" for="form2Example22">Senha</label>
+                                        <span asp-validation-for="Password" class="text-danger" ></span>
+                                    </div>
+
+                                    <div class="text-center pt-1 mb-5 pb-1">
+                                        <button class="btn btn-primary btn-block fa-md gradient-custom-2 mb-3" type="submit">
+                                            Entrar
+                                        </button>
+                                        <a class="text-muted" href="#!">Esqueceu a senha?</a>
+                                    </div>
+
+                                    <div class="d-flex align-items-center justify-content-center pb-4">
+                                        <p class="mb-0 me-2">Não possui uma conta?</p>
+                                        <button type="button" class="btn btn-outline-danger">Criar conta</button>
+                                    </div>
+
+                                </form>
+
+                            </div>
+                        </div>
+                        <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+                            <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                                <h4 class="mb-4">Pode confiar</h4>
+                                <p class="small mb-0">
+                                    Desde 2018 no Brasil, a Lei Geral de Proteção de Dados (LGPD) prevê que empresas estejam comprometidas com a proteção da privacidade e segurança no tratamento de dados pessoais de pessoas físicas.
+
+                                    Mesmo com algumas indefinições por parte do governo, a Locals já está adequada para garantir maior transparência em relação ao tratamento dos seus dados pessoais.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
