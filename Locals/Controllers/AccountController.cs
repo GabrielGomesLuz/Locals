@@ -74,6 +74,8 @@ namespace Locals.Controllers
 
                 if(result.Succeeded)
                 {
+                    //todo usuario que for registrado estara no perfil Member
+                    await _userManager.AddToRoleAsync(user, "Member");
                     return RedirectToAction("Login", "Account");
                 }
                 else

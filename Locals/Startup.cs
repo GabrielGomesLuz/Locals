@@ -1,11 +1,10 @@
 ﻿using Locals.Context;
-using Locals.Repositories.Interfaces;
-using Microsoft.AspNetCore.Connections;
-using Microsoft.EntityFrameworkCore;
-using Locals.Repositories;
-using Microsoft.Extensions.DependencyInjection;
 using Locals.Models;
+using Locals.Repositories;
+using Locals.Repositories.Interfaces;
+using Locals.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace Locals;
 
@@ -46,6 +45,17 @@ public class Startup
         //criar uma instancia da classe e injetar no construtor que estiver solciitando
         services.AddTransient<I_ImovelRepository,ImovelRepository>();
         services.AddTransient<ICategoriaRepository,CategoriaRepository>();
+        services.AddScoped<ISeedUserRoleInitial,SeedUserRoleInitial>();
+
+        //adicionado uma nova politica para acessar o admin
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("Admin", politica =>
+            {
+                politica.RequireRole("Admin");
+            });
+        });
+
         //Cria instancia a cada request
         services.AddScoped(p => CarrinhoReserva.GetCarrinho(p));
         //definindo tempo de vida do session e criar instancia do http context para receber informações de request e response e requisições
@@ -57,7 +67,7 @@ public class Startup
     }
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ISeedUserRoleInitial seedUserRoleInitial)
     {
         if (env.IsDevelopment())
         {
@@ -73,6 +83,10 @@ public class Startup
         app.UseStaticFiles();
 
         app.UseRouting();
+        //criando perfis
+        seedUserRoleInitial.SeedRoles();
+        //criando usuarios e atribuindo perfis
+        seedUserRoleInitial.SeedUsers();
         //configurando session
         app.UseSession();
         app.UseAuthentication();
@@ -80,7 +94,10 @@ public class Startup
 
         app.UseEndpoints(endpoints =>
         {
-
+            endpoints.MapControllerRoute(
+            name: "areas",
+            pattern: "{area:exists}/{controller=Admin}/{action=Index}/{id?}"
+          );
 
             endpoints.MapControllerRoute(
                 name: "default",

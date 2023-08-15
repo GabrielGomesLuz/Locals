@@ -1,6 +1,7 @@
 ﻿using Locals.Models;
 using Locals.Repositories.Interfaces;
 using Locals.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Locals.Controllers
@@ -32,6 +33,7 @@ namespace Locals.Controllers
             return View(carrinhoReservaVM);
         }
 
+        [Authorize]
         public IActionResult AdicionarItemNoCarrinhoReserva(int imovelId)
         {
             var imovelSelecionado = _repository.Imoveis.FirstOrDefault(p => p.ImovelId == imovelId);
@@ -43,6 +45,7 @@ namespace Locals.Controllers
             return RedirectToAction("Index");
         }
 
+        [Authorize]
         public IActionResult RemoverImovelDoCarrinho(int imovelId)
         {
             var imovelSelecionado = _repository.Imoveis.FirstOrDefault(p => p.ImovelId == imovelId);

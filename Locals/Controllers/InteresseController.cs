@@ -2,6 +2,7 @@
 using Locals.Repositories.Interfaces;
 using Locals.Models;
 using Locals.Migrations;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Locals.Controllers
 {
@@ -17,13 +18,14 @@ namespace Locals.Controllers
             this.carrinhoReserva = carrinhoReserva;
         }
 
-
+        [Authorize]
         [HttpGet]
         public IActionResult Checkout()
         {
             return View();
         }
 
+        [Authorize]
         [HttpPost]
         public IActionResult Checkout(ReservaInteresse reserva)
         {
