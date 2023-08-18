@@ -1,0 +1,100 @@
+﻿@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+
+<style>
+    
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+html {
+    height: 100%;
+}
+body {
+    
+    background-color:black; 
+    height: 50%;
+    
+   
+}
+
+#retorno {
+  color: blue !important;
+  text-decoration:none;
+  font-family: 'Raleway', sans-serif;
+}
+a:hover {
+  color: #FFFFFF !important;
+  text-decoration:none;
+}
+
+.text-wrapper {
+    height: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+        font-family: 'Raleway', sans-serif;
+}
+
+.title {
+    font-size: 5em;
+    font-weight: 700;
+    color:darkred;
+    padding-top:130px;
+        font-family: 'Raleway', sans-serif;
+}
+
+.subtitle {
+    font-size: 40px;
+    font-weight: 700;
+    color:blue;
+    padding-top:10px;
+        font-family: 'Raleway', sans-serif;
+}
+.isi {
+    font-size: 18px;
+    text-align: center;
+    margin:30px;
+    padding:20px;
+    color: white;
+        font-family: 'Raleway', sans-serif;
+}
+.buttons {
+    margin: 30px;
+        font-weight: 700;
+        border: 2px solid blue;
+        text-decoration: none;
+        padding: 15px;
+        text-transform: uppercase;
+        color: blue;
+        border-radius: 26px;
+        transition: all 0.2s ease-in-out;
+        display: inline-block;
+        font-family: 'Raleway', sans-serif;
+        
+  }
+
+    
+</style>
+
+
+
+
+<div class="text-wrapper">
+    <div class="title" data-content="404">
+        403 - ACESSO NEGADO
+    </div>
+
+    <div class="subtitle">
+        Oops, @User.Identity.Name você não possui acesso a essa página
+    </div>
+    <div class="isi">
+        Para obter acesso a essa página você deve ser administrador, para mais informações entrar em contato via e-mail.
+    </div>
+
+    <div class="buttons">
+        <a class="button" id="retorno" asp-controller="Home" asp-action="Index" >Ir para Início</a>
+    </div>
+</div>

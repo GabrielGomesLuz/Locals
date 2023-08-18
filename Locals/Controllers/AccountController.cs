@@ -96,6 +96,10 @@ namespace Locals.Controllers
         }
 
 
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
 
 
 
