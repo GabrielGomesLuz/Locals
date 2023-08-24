@@ -1,10 +1,12 @@
-﻿using Locals.Context;
+﻿using Locals.Areas.Admin.Services;
+using Locals.Context;
 using Locals.Models;
 using Locals.Repositories;
 using Locals.Repositories.Interfaces;
 using Locals.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ReflectionIT.Mvc.Paging;
 
 namespace Locals;
 
@@ -46,6 +48,9 @@ public class Startup
         services.AddTransient<I_ImovelRepository,ImovelRepository>();
         services.AddTransient<ICategoriaRepository,CategoriaRepository>();
         services.AddScoped<ISeedUserRoleInitial,SeedUserRoleInitial>();
+        services.AddScoped<RelatoriosVendasService>();
+
+        services.Configure<ConfigurationImagensImoveis>(Configuration.GetSection("ConfigurationPastaImagens"));
 
         //adicionado uma nova politica para acessar o admin
         services.AddAuthorization(options =>
@@ -60,6 +65,10 @@ public class Startup
         services.AddScoped(p => CarrinhoReserva.GetCarrinho(p));
         //definindo tempo de vida do session e criar instancia do http context para receber informações de request e response e requisições
         services.AddSingleton<IHttpContextAccessor,HttpContextAccessor>();
+
+
+       
+
         services.AddMemoryCache();
         services.AddSession();
 

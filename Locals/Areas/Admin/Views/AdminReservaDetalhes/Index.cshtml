@@ -1,0 +1,79 @@
+﻿
+@model IEnumerable<Locals.Models.ReservaDetalhe>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<style>
+    #txt {
+        padding-top: 30px;
+    }
+</style>
+
+<h3>Demonstrações de interesse</h3>
+
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Reserva.TitularReserva)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reserva.EndereçoTitular)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reserva.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reserva.TelefoneTitular)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Imovel.NomeImovel)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Imovel.ImovelId)
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reserva.TitularReserva)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reserva.EndereçoTitular)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reserva.Email)
+            </td>
+
+            <td>
+                    @Html.DisplayFor(modelItem => item.Reserva.TelefoneTitular)
+            </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Imovel.NomeImovel)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Imovel.ImovelId)
+                </td>
+
+            <td>
+                
+                <a asp-action="Delete" asp-route-id="@item.ReservaDetalheId">Excluir</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

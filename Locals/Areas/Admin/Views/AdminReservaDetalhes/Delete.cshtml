@@ -1,0 +1,47 @@
+﻿@model Locals.Models.ReservaDetalhe
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<style>
+    #txt{
+        padding-top:30px;
+    }
+</style>
+
+
+
+<h1 id="txt">Exclusão</h1>
+
+<h3>Você tem certeza que deseja excluir?</h3>
+<div>
+    <h4>Detalhes</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Preco)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Preco)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Imovel)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Imovel.DescricaoCurta)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Reserva)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Reserva.Email)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="ReservaDetalheId" />
+        <input type="submit" value="Excluir" class="btn btn-danger" /> |
+        <a asp-action="Index">Voltar</a>
+    </form>
+</div>

@@ -8,6 +8,7 @@ namespace Locals.Models
     public class ReservaInteresse
     {
         [Key]
+        
         public int ReservaInteresseId { get; set; }
 
         

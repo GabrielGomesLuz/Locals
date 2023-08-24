@@ -1,0 +1,102 @@
+﻿@model Locals.Models.Imovel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<style>
+    #txt {
+        padding-top: 30px;
+    }
+</style>
+
+<h1 id="txt">Editar Categorias</h1>
+
+<h4>Detalhes</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="ImovelId" />
+            <div class="form-group">
+                <label asp-for="NomeImovel" class="control-label"></label>
+                <input asp-for="NomeImovel" class="form-control" />
+                <span asp-validation-for="NomeImovel" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescricaoCurta" class="control-label"></label>
+                <input asp-for="DescricaoCurta" class="form-control" />
+                <span asp-validation-for="DescricaoCurta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DescricaoDetalhada" class="control-label"></label>
+                <input asp-for="DescricaoDetalhada" class="form-control" />
+                <span asp-validation-for="DescricaoDetalhada" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Preco" class="control-label"></label>
+                <input asp-for="Preco" class="form-control" />
+                <span asp-validation-for="Preco" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagemUrl" class="control-label"></label>
+                <input asp-for="ImagemUrl" class="form-control" />
+                <span asp-validation-for="ImagemUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagemThumbnailUrl" class="control-label"></label>
+                <input asp-for="ImagemThumbnailUrl" class="form-control" />
+                <span asp-validation-for="ImagemThumbnailUrl" class="text-danger"></span>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="IsImovelDestaque" /> @Html.DisplayNameFor(model => model.IsImovelDestaque)
+                </label>
+            </div>
+            <div class="form-group form-check">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="Disponivel" /> @Html.DisplayNameFor(model => model.Disponivel)
+                </label>
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoriaId" class="control-label"></label>
+                <select asp-for="CategoriaId" class="form-control" asp-items="ViewBag.CategoriaId"></select>
+                <span asp-validation-for="CategoriaId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Imagem1" class="control-label"></label>
+                <input asp-for="Imagem1" class="form-control" />
+                <span asp-validation-for="Imagem1" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Imagem2" class="control-label"></label>
+                <input asp-for="Imagem2" class="form-control" />
+                <span asp-validation-for="Imagem2" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagemUrl3" class="control-label"></label>
+                <input asp-for="ImagemUrl3" class="form-control" />
+                <span asp-validation-for="ImagemUrl3" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagemUrl4" class="control-label"></label>
+                <input asp-for="ImagemUrl4" class="form-control" />
+                <span asp-validation-for="ImagemUrl4" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ImagemUrl5" class="control-label"></label>
+                <input asp-for="ImagemUrl5" class="form-control" />
+                <span asp-validation-for="ImagemUrl5" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Salvar" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Voltar</a>
+</div>
+
