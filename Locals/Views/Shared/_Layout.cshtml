@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿
+
+<!DOCTYPE html>
 <html lang="pt-br">
 <head>
     <meta charset="utf-8" />
@@ -15,7 +17,7 @@
       
           <nav class="navbar navbar-light bg-light">
       
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" asp-controller="Home" asp-action="Index">
       
               <img src="~/Images/logo.svg" width="30" height="30" class="d-inline-block align-top" alt="">
       
@@ -41,17 +43,7 @@
       
               </li>
       
-              <li class="nav-item">
-      
-                <a class="nav-link" href="#">Contato</a>
-      
-              </li>
-      
-              <li class="nav-item">
-      
-                <a class="nav-link" href="#">Sobre nós</a>
-      
-              </li>
+              
 
                     <li>
                   
@@ -98,16 +90,14 @@
                 <a href="https://twitter.com/login?lang=pt" class="me-4 link-secondary">
                   <i class="fab fa-twitter"></i>
                 </a>
-                <a href="" class="me-4 link-secondary">
-                  <i class="fab fa-google"></i>
-                </a>
-                <a href="" class="me-4 link-secondary">
+
+                    <a href="https://www.instagram.com/?theme=dark" class="me-4 link-secondary">
                   <i class="fab fa-instagram"></i>
                 </a>
-                <a href="" class="me-4 link-secondary">
+                    <a href="https://www.linkedin.com/login" class="me-4 link-secondary">
                   <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="" class="me-4 link-secondary">
+                    <a href="https://github.com/GabrielGomesLuz" class="me-4 link-secondary">
                   <i class="fab fa-github"></i>
                 </a>
               </div>
@@ -133,24 +123,7 @@
                   <!-- Grid column -->
           
                   <!-- Grid column -->
-                  <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                      Categorias
-                    </h6>
-                    <p>
-                      <a href="#!" class="text-reset">Rústicos</a>
-                    </p>
-                    <p>
-                      <a href="#!" class="text-reset">Praia</a>
-                    </p>
-                    <p>
-                      <a href="#!" class="text-reset">Alto padrão</a>
-                    </p>
-                    <p>
-                      <a href="#!" class="text-reset">Urbano</a>
-                    </p>
-                  </div>
+                 
                   <!-- Grid column -->
           
                   <!-- Grid column -->
@@ -160,16 +133,16 @@
                       Links úteis
                     </h6>
                     <p>
-                      <a href="#!" class="text-reset">Sobre nós</a>
+                      <a asp-controller="Account" asp-action="Login" class="text-reset">Login</a>
                     </p>
                     <p>
-                      <a href="#!" class="text-reset">Imóveis</a>
+                      <a asp-controller="Imoveis" asp-action="List" class="text-reset">Imóveis</a>
                     </p>
                     <p>
                       <a href="#!" class="text-reset"></a>
                     </p>
                     <p>
-                      <a href="#!" class="text-reset">Ajuda</a>
+                      <a asp-controller="Account" asp-action="Register" class="text-reset">Registrar - se</a>
                     </p>
                   </div>
                   <!-- Grid column -->
@@ -179,12 +152,16 @@
                     <!-- Links -->
                     <h6 class="text-uppercase fw-bold mb-4">Contato</h6>
                     <p><i class="fas fa-home me-3 text-secondary"></i> R. André de Barros, 750 - Centro,Curitiba - PR</p>
-                    <p>
-                      <i class="fas fa-envelope me-3 text-secondary"></i>
+
+
+                    <p><i class="fas fa-envelope me-3 text-secondary"></i>
                       <a href="mailto:Locals.Curitiba@gmail.com" title ="">Locals.Curitiba@gmail.com</a>
                     </p>
-                    <p><i class="fas fa-phone me-3 text-secondary"></i> +55 41 984684604</p>
-                    <p><i class="fas fa-phone me-3 text-secondary"></i> +55 41 995596783</p>
+
+
+
+                    <p><i class="fas fa-phone me-3 text-secondary"></i> +55 41 999999999</p>
+                    <p><i class="fas fa-phone me-3 text-secondary"></i> +55 41 888888888</p>
                   </div>
                   <!-- Grid column -->
                 </div>
@@ -200,7 +177,7 @@
             </div>
             <!-- Copyright -->
           </footer>
-          <!-- Footer --></footer>
+    </footer>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

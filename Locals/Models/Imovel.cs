@@ -9,13 +9,13 @@ namespace Locals.Models
 
 
         [MinLength(10, ErrorMessage = "Nome deve ter no minímo {1} caracteres")]
-        [MaxLength(100, ErrorMessage = "Nome deve ter no máximo {1} caracteres")]
+        [MaxLength(30, ErrorMessage = "Nome deve ter no máximo {1} caracteres")]
         [Required(ErrorMessage = "Informe o nome do imóvel")]
         [Display(Name = "Nome do Imóvel")]
         public string NomeImovel { get; set; }
 
-        [MinLength(30,ErrorMessage ="Descrição deve ter no minímo {1} caracteres")]
-        [MaxLength(200, ErrorMessage = "Descrição deve ter no máximo {1} caracteres")]
+        [MinLength(10, ErrorMessage ="Descrição deve ter no minímo {1} caracteres")]
+        [MaxLength(80, ErrorMessage = "Descrição deve ter no máximo {1} caracteres")]
         [Required(ErrorMessage = "Informe a descrição do imóvel")]
         [Display(Name = "Descrição do Imóvel")]
         public string DescricaoCurta { get; set; }
@@ -32,7 +32,7 @@ namespace Locals.Models
         [Required(ErrorMessage = "Informe o preço do Imóvel")]
         [Display(Name = "Preço do Imóvel")]
         [Column(TypeName ="decimal(10,2)")]
-        [Range(1,999.99,ErrorMessage ="O preço deve estar entre 1 e 999,99")]
+        [Range(1, double.MaxValue, ErrorMessage = "O preço deve estar entre 1 e 999,99")]
 
         public decimal Preco { get; set; }
 
