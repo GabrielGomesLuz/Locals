@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Locals.Models;
 using Locals.Repositories;
-using Locals.Repositories.Interfaces;
 using Locals.ViewModels;
-using Locals.Models;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Locals.Controllers
 {

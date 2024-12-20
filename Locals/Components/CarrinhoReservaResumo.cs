@@ -1,4 +1,4 @@
-﻿using Locals.Models;
+﻿using Locals.Repositories.Models;
 using Locals.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 

@@ -1,12 +1,10 @@
 ﻿using Locals.Areas.Admin.Services;
 using Locals.Context;
-using Locals.Models;
 using Locals.Repositories;
-using Locals.Repositories.Interfaces;
+using Locals.Repositories.Models;
 using Locals.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using ReflectionIT.Mvc.Paging;
 
 namespace Locals;
 

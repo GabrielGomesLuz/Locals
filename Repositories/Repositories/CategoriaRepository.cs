@@ -1,9 +1,16 @@
-﻿using Locals.Models;
-using Locals.Repositories.Interfaces;
-using Locals.Context;
+﻿using Locals.Context;
+using Locals.Repositories.Models;
 
 namespace Locals.Repositories
 {
+
+    public interface ICategoriaRepository
+    {
+        //Esse atributo IEnumerable irá ter que ser implementado pela classe concreta,
+        //pois a mesma deve me retornar uma lista das categorias de imoveis
+        IEnumerable<Categoria> Categorias { get; }
+    }
+
     public class CategoriaRepository : ICategoriaRepository
     {
         //declarando um objeto de dbcontext para ter acesso aos dados do banco

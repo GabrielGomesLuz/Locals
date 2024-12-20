@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Locals.Context;
+using Locals.Repositories.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using Locals.Context;
-using Locals.Models;
-using Microsoft.IdentityModel.Tokens;
-using ReflectionIT.Mvc.Paging;
-using Microsoft.AspNetCore.Authorization;
 
 namespace Locals.Areas.Admin.Controllers
 {

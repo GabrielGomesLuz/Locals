@@ -1,10 +1,10 @@
-﻿using Locals.Models;
-using Locals.Repositories.Interfaces;
+﻿using Locals.Repositories;
+using Locals.Repositories.Models;
 using Locals.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Locals.Controllers
+namespace Locals.UI.Controllers
 {
     public class HomeController : Controller
     {

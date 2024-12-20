@@ -1,8 +1,10 @@
 ﻿using Locals.Context;
-using Locals.Migrations;
+using Locals.Models;
+using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
-namespace Locals.Models
+namespace Locals.Repositories.Models
 {
     public class CarrinhoReserva
     {
@@ -27,7 +29,7 @@ namespace Locals.Models
 
             //obter instancia de contexto
             var context = services.GetService<AppDbContext>();
-            
+
 
             //obtem ou gera id do carrinho
             string carrinhoId = session.GetString("CarrinhoId") ?? Guid.NewGuid().ToString();
@@ -51,7 +53,7 @@ namespace Locals.Models
             var carrinhoReservaImovel = _context.CarrinhoReservaItens.SingleOrDefault(
                 p => p.Imovel.ImovelId == imovel.ImovelId && p.CarrinhoReservaId == CarrinhoReservaId);
 
-            if(carrinhoReservaImovel == null)
+            if (carrinhoReservaImovel == null)
             {
                 carrinhoReservaImovel = new CarrinhoReservaImovel
                 {
@@ -64,7 +66,7 @@ namespace Locals.Models
                 _context.CarrinhoReservaItens.Add(carrinhoReservaImovel);
                 _context.SaveChanges();
             }
-            
+
         }
 
         public void RemoverDoCarrinho(Imovel imovel)
@@ -72,7 +74,7 @@ namespace Locals.Models
             var carrinhoReservaImovel = _context.CarrinhoReservaItens.SingleOrDefault(
                 p => p.Imovel.ImovelId == imovel.ImovelId && p.CarrinhoReservaId == CarrinhoReservaId);
 
-            if(carrinhoReservaImovel != null)
+            if (carrinhoReservaImovel != null)
             {
                 _context.CarrinhoReservaItens.Remove(carrinhoReservaImovel);
             }
@@ -96,9 +98,26 @@ namespace Locals.Models
 
         public IQueryable GetCarrinhoTotal()
         {
-            var total = _context.CarrinhoReservaItens.Where(p => p.CarrinhoReservaId == CarrinhoReservaId).Select(p => p.Imovel.Preco * (p.DataSaida.Subtract(p.DataEntrada).Days));
+            var total = _context.CarrinhoReservaItens.Where(p => p.CarrinhoReservaId == CarrinhoReservaId).Select(p => p.Imovel.Preco * p.DataSaida.Subtract(p.DataEntrada).Days);
             return total;
         }
     }
+
+    public static class SessionExtensions
+    {
+        public static void SetString(this ISession session, string key, string value)
+        {
+            session.Set(key, System.Text.Encoding.UTF8.GetBytes(value));
+        }
+
+        public static string GetString(this ISession session, string key)
+        {
+            if (session.TryGetValue(key, out var value))
+            {
+                return System.Text.Encoding.UTF8.GetString(value);
+            }
+
+            return null;
+        }
+    }
 }
- 
