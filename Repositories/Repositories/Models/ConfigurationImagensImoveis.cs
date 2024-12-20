@@ -1,4 +1,4 @@
-﻿namespace Locals.Models
+﻿namespace Locals.Repositories.Models
 {
     public class ConfigurationImagensImoveis
     {

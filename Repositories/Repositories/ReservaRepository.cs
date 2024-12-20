@@ -1,11 +1,21 @@
 ﻿using Locals.Context;
-using Locals.Models;
-using Locals.Repositories.Interfaces;
+using Locals.Repositories.Models;
 
 
 
 namespace Locals.Repositories
 {
+
+
+    //metodo para criar um interesse de reserva e posterior uma pagina de detalhes
+    public interface IReservaRepository
+    {
+
+        void CriarReserva(ReservaInteresse Reserva);
+
+
+    }
+
     public class ReservaRepository : IReservaRepository
     {
 

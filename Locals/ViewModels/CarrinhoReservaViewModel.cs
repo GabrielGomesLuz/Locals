@@ -1,5 +1,5 @@
-﻿using Locals.Models;
-using Locals.Repositories;
+﻿using Locals.Repositories;
+using Locals.Repositories.Models;
 
 namespace Locals.ViewModels
 {

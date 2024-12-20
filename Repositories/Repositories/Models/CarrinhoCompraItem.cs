@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Locals.Models;
+using System.ComponentModel.DataAnnotations;
 
-namespace Locals.Models
+namespace Locals.Repositories.Models
 {
     public class CarrinhoReservaImovel
     {

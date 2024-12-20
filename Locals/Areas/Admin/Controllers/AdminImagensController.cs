@@ -1,4 +1,4 @@
-﻿using Locals.Models;
+﻿using Locals.Repositories.Models;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;

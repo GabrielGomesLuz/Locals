@@ -1,17 +1,13 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Locals.Models;
+﻿using Locals.Models;
+using Locals.Repositories.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Design;
+using Microsoft.EntityFrameworkCore;
 
 namespace Locals.Context
 {
     public class AppDbContext : IdentityDbContext<IdentityUser>
     {
-
-
-
-
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
             
@@ -25,12 +21,6 @@ namespace Locals.Context
         public DbSet<ReservaDetalhe> ReservaDetalhe { get; set; }
 
         public DbSet<ReservaInteresse> ReservaInteresse { get; set; }
-
-        
-        
-
-
-
 
 
     }

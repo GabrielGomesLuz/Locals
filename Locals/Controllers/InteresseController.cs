@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Locals.Repositories.Interfaces;
-using Locals.Models;
-using Locals.Migrations;
+﻿using Locals.Repositories;
+using Locals.Repositories.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Locals.Controllers
 {
@@ -32,7 +31,7 @@ namespace Locals.Controllers
             int totalItens = 0; 
             decimal precoTotal = decimal.Zero;
 
-            List<Models.CarrinhoReservaImovel> itens = carrinhoReserva.GetCarrinhoReservaImoveis();
+            List<Repositories.Models.CarrinhoReservaImovel> itens = carrinhoReserva.GetCarrinhoReservaImoveis();
             carrinhoReserva.CarrinhoReservaImoveis = itens;
 
             //verificar se existe imoveis no carrinho

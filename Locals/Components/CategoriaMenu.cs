@@ -1,4 +1,4 @@
-﻿using Locals.Repositories.Interfaces;
+﻿using Locals.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Locals.Components

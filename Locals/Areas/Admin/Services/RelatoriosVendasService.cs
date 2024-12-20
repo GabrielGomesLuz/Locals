@@ -1,5 +1,5 @@
 ﻿using Locals.Context;
-using Locals.Models;
+using Locals.Repositories.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace Locals.Areas.Admin.Services
